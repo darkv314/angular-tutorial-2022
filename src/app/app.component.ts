@@ -89,6 +89,32 @@ export class AppComponent {
 
     const { country } = person;
     console.log('country: ', country);
+
+
+    const data = {
+      0: {
+        id: 1,
+        name: 'juan',
+        age: 10
+      }, 
+      1: {
+        id: 2,
+        name: 'Lola',
+        age: 24
+      }
+    };
+
+    //convertir a un array y obtener la edad de edades
+
+    const resp = Object.values(data).reduce((prev, value) => prev + value.age, 0);
+    console.log('resp: ', resp)
+
+    //convertir a array, filtrar las personas mayores a 10 y mostrar solo los id
+
+    const ar = [];
+
+    const resp1 = Object.values(data).filter(ob => ob.age > 10).map(ob => ob.id)
+    console.log('resp1: ', resp1)
   }
 
   // Arrow function examples
