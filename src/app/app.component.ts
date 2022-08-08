@@ -65,6 +65,30 @@ export class AppComponent {
 
     const auxValues = Object.values(auxJson);
     console.log('auxValues: ', auxValues);
+
+    const a = 1;
+
+    for (var i = 1; i <= 5; i++) {
+      console.log('Index', i);
+    }
+
+    const b = [1, 2, 3, 4, 5];
+    const c = [...b, ...b, 6, 7, 8];
+    console.log(c);
+
+    this.getRest(1, 2, 'hola');
+
+    const person = {
+      id: 1,
+      name: 'Juan',
+      country: {
+        idCountry: 1,
+        cod: 'LP',
+      },
+    };
+
+    const { country } = person;
+    console.log('country: ', country);
   }
 
   // Arrow function examples
@@ -76,5 +100,9 @@ export class AppComponent {
 
   private getName(name: string): string {
     return 'hi ' + name;
+  }
+
+  getRest(...params: any[]) {
+    console.log('Rest: ', params);
   }
 }
