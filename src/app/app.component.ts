@@ -19,4 +19,12 @@ export class AppComponent {
     console.log('Hi parent component: ', event);
     this.person = event;
   }
+
+  getLastName(event: any) {
+    console.log('Last name: ', event);
+  }
+
+  getPrintName(name: any) {
+    console.log('Print name: ', name.value);
+  }
 }

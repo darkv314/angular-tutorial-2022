@@ -19,3 +19,8 @@
 <input type="number" [(ngModel)]="a" />
 <input type="number" [(ngModel)]="b" />
 <p>{{ a + b }}</p>
+
+Last Name <input type="text" ngModel (ngModelChange)="getLastName($event)" />
+
+Name <input type="text" #name>
+<button (click)=getPrintName(name)>Print name</button>
