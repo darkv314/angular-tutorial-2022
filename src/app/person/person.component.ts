@@ -3,8 +3,21 @@ import { Person } from './person.model';
 
 @Component({
   selector: 'app-person',
-  templateUrl: './person.component.html',
-  styleUrls: ['./person.component.css'],
+  template: `
+  <div class="border-person">
+    <p>Name: {{ name }}</p>
+    <p>Last name: {{ lastName }}</p>
+    <p>Age: {{ age }}</p>
+    <button (click)="onPrint()">Print</button>
+  </div>
+  `,
+  styles: [
+    `
+      .border-person {
+        border: 3px solid red;
+      }
+    `,
+  ],
 })
 export class PersonComponent implements OnInit {
   @Input() name: string = '';
@@ -12,11 +25,7 @@ export class PersonComponent implements OnInit {
   @Input() age: number = 0;
 
   @Output() print = new EventEmitter<Person>();
-  public person: Person = {
-    name: '',
-    lastName: '',
-    age: 0,
-  };
+
   constructor() {}
 
   ngOnInit() {}

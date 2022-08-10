@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'test';
   public person!: Person;
 
-  getPrint(event: Person) {
+  getPrint(event: Person, idPerson?: string) {
     console.log('Hi parent component: ', event);
     this.person = event;
   }
