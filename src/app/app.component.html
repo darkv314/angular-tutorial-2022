@@ -10,3 +10,12 @@
 <p>{{ person?.name }}</p>
 <p>{{ person?.lastName }}</p>
 <p>{{ person?.age }}</p>
+
+<!-- Solo de un lado -->
+<input type="text" [ngModel]="student" />
+<P>{{ student }}</P>
+
+<!-- Se cambia en tiempo real -->
+<input type="number" [(ngModel)]="a" />
+<input type="number" [(ngModel)]="b" />
+<p>{{ a + b }}</p>
