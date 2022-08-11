@@ -1,3 +1,4 @@
 <p>Angular</p>
-<app-test1></app-test1>
+<app-test1 [name]="name" [lastname]="lastname"></app-test1>
 
+<button (click)="name = 'Juan'; lastname='Santander'">Change name</button>

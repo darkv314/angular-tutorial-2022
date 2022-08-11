@@ -1,4 +1,10 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 
 @Component({
   selector: 'app-test1',
@@ -6,13 +12,25 @@ import { Component, OnChanges, OnInit } from '@angular/core';
   styleUrls: ['./test1.component.css'],
 })
 export class Test1Component implements OnInit, OnChanges {
-  constructor() {}
+  @Input() name!: string;
+  @Input() lastname: string = 'Perez';
+
+  constructor() {
+    console.log('Constructor');
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('On changes', changes, changes['name'].isFirstChange());
+
+    if (
+      changes['name'].isFirstChange !== undefined &&
+      !changes['name'].isFirstChange()
+    ) {
+      console.log('Call country service');
+    }
+  }
 
   ngOnInit() {
     console.log('On init');
-  }
-
-  ngOnChanges(): void {
-    console.log('On changes');
   }
 }
