@@ -1,5 +1,6 @@
 import {
   Component,
+  DoCheck,
   Input,
   OnChanges,
   OnInit,
@@ -11,9 +12,12 @@ import {
   templateUrl: './test1.component.html',
   styleUrls: ['./test1.component.css'],
 })
-export class Test1Component implements OnInit, OnChanges {
+export class Test1Component implements OnInit, OnChanges, DoCheck {
   @Input() name!: string;
   @Input() lastname: string = 'Perez';
+
+  public middleName: string = 'lol';
+  public generalData: string = '';
 
   constructor() {
     console.log('Constructor');
@@ -32,5 +36,10 @@ export class Test1Component implements OnInit, OnChanges {
 
   ngOnInit() {
     console.log('On init');
+  }
+
+  ngDoCheck(): void {
+    console.log('DoCheck');
+    this.generalData = this.name + ' ' + this.lastname + ' ' + this.middleName;
   }
 }
