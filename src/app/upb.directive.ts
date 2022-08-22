@@ -4,12 +4,14 @@ import {
   TemplateRef,
   ViewContainerRef,
   OnInit,
+  OnChanges,
+  SimpleChanges,
 } from '@angular/core';
 
 @Directive({
   selector: '[upb]',
 })
-export class UpbDirective implements OnInit {
+export class UpbDirective implements OnInit, OnChanges {
   @Input() upb!: boolean;
 
   constructor(
@@ -17,8 +19,10 @@ export class UpbDirective implements OnInit {
     private viewContainer: ViewContainerRef
   ) {}
 
-  ngOnInit() {
-    if (this.upb) {
+  ngOnInit() {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['upb'] && changes['upb'].currentValue) {
       this.viewContainer.createEmbeddedView(this.templateRef);
     } else {
       this.viewContainer.clear();
