@@ -8,7 +8,7 @@ export class OverUpbDirective implements OnChanges {
   constructor(private element: ElementRef) {}
 
   ngOnChanges() {
-    console.log(this.element);
+    console.log(this.element); 
     this.element.nativeElement.style.backgroundColor = this.overUpb;
   }
 }
