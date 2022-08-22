@@ -1,6 +1,4 @@
 <p>Angular previous test</p>
-<p>Calor</p>
 
-<div *ngFor="let product of products$ | async">
-  <app-product [name]="product.nombre"> </app-product>
-</div>
+<p>Pipe concat : {{ 'hola' | upbConcat: 2 }}</p>
+<p>Pipe expo : {{ 3 | upbExpo: 2:'Este es mi mensaje' }}</p>
