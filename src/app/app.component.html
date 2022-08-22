@@ -22,3 +22,12 @@
     <button>Hola {{ item }}</button>
   </app-person>
 </div>
+
+<input type="number" [(ngModel)]="level" />
+
+<div [ngSwitch]="level">
+  <p *ngSwitchCase="1">Nivel es 1</p>
+  <p *ngSwitchCase="2">Nivel es 2</p>
+  <p *ngSwitchCase="3">Nivel es 3</p>
+  <p *ngSwitchDefault>Opcion por defecto</p>
+</div>
