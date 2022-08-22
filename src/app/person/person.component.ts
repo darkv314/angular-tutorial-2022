@@ -36,4 +36,7 @@ export class PersonComponent implements OnInit {
   ngAfterViewChecked() {
     console.log('ngAfterViewChecked');
   }
+  ngOnDestroy() {
+    console.log('ngOnDestroy');
+  }
 }
