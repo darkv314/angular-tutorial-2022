@@ -1,0 +1,15 @@
+<div [ngClass]="{
+    c1: color === 'red',
+    c2: color === 'green',
+    c3: color === 'yellow'
+}">
+    <p>Id: {{id}}</p>
+    <p>Type: {{type | uppercase}}</p>
+    <p>Color: {{color}}</p>
+    <p>Capacity: {{capacity}}</p>
+    <p>Create Date: {{cDate | date:'dd/MM/YY'}}</p>
+    <p>Price: {{price | price: mType: category : ttype}}</p>
+    <div *ngFor="let color of colors">
+        <button (click)="handleClick(color)">{{color}}</button>
+    </div>
+</div>
