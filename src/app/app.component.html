@@ -1,1 +1,9 @@
 <p>Angular</p>
+
+<p>Pure Pipe</p>
+<div>{{ data | pure }}</div>
+
+<p>Impure Pipe</p>
+<div>{{ data | impure }}</div>
+
+<button (click)="data.push(4)">Add</button>
