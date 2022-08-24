@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { View2Component } from './view2/view2.component';
-import { View1Component } from './view1/view1.component';
 import { DashboardComponent } from './dashboard.component';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -13,19 +11,19 @@ const routes: Routes = [
       {
         title: 'soy view 1',
         path: 'view1',
-        component: View1Component
+        loadChildren: () => import('./view1/view1.module').then(m => m.View1Module)
       },
       {
         title: 'soy view 2',
         path: 'view2',
-        component: View2Component
+        loadChildren: () => import('./view2/view2.module').then(m => m.View2Module)
       }
     ]
   }
 ];
 
 @NgModule({
-  declarations: [DashboardComponent, View1Component, View2Component],
+  declarations: [DashboardComponent],
   imports: [
     CommonModule, RouterModule.forChild(routes)
   ]
