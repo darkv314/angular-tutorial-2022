@@ -9,5 +9,11 @@
 <button (click)="goView1()">View1TS</button>
 <button (click)="goView2()">View2TS</button>
 
+<button [routerLink]="'view3'" 
+[queryParams]="{name: 'maria', lastName: 'perez'}">
+goToView3</button>
+
+<button (click)="goView3()">goToView3TS</button>
+
 
 <router-outlet></router-outlet>
