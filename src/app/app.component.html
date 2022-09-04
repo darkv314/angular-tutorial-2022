@@ -1,2 +1,13 @@
 <p>Angular</p>
+
+<input type="text" [(ngModel)]="id">
+
+<button [routerLink]="['view1', id]">View1</button>
+<button [routerLink]="['view2', id, 'listNames', id]">View2</button>
+
+
+<button (click)="goView1()">View1TS</button>
+<button (click)="goView2()">View2TS</button>
+
+
 <router-outlet></router-outlet>
