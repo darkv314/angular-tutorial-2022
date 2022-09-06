@@ -18,5 +18,15 @@ export class AppComponent implements OnInit{
     .subscribe(res => {
       console.log('Response: ', res)
     })
+
+    this.productService.createProduct({
+      description: 'soy la descripcion',
+      imageUrl: 'soy la imagen',
+      ownerId: 1,
+      price: 20,
+      title: 'Polera',
+    }).subscribe(res => {
+      console.log('Response post: ', typeof(res))
+    })
   }
 }
