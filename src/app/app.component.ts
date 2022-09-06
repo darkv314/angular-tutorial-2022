@@ -28,5 +28,22 @@ export class AppComponent implements OnInit{
     }).subscribe(res => {
       console.log('Response post: ', typeof(res))
     })
+
+    this.productService.deleteProduct('p2')
+    .subscribe(res => {
+      console.log('Response delete: ', res)
+    })
+
+    this.productService.updateProduct('p9', {
+      description: 'Modificado',
+      imageUrl: 'modificado',
+      ownerId: 100000,
+      price: 100000,
+      title: 'modificado'
+    }).subscribe(res => {
+      console.log('Response update: ', res)
+    })
+
   }
+
 }
