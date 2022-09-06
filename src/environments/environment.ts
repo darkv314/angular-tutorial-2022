@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   app: {
-    apiUrlBase: 'https://league-of-legends-vankaz.web.app/'
+    apiUrlBase: 'https://league-of-legends-vankaz-default-rtdb.firebaseio.com/'
   }
 };
 

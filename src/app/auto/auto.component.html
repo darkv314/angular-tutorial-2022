@@ -2,8 +2,9 @@
     c1: color === 'red',
     c2: color === 'green',
     c3: color === 'yellow'
-}">
-    <p>Id: {{id}}</p>
+}" (hover)="showId = $event">
+    <p *ngIf="showMessage">No disponible</p>
+    <p *ngIf="showId">Id: {{id}}</p>
     <p>Type: {{type | uppercase}}</p>
     <p>Color: {{color}}</p>
     <p>Capacity: {{capacity}}</p>
@@ -12,4 +13,5 @@
     <div *ngFor="let color of colors">
         <button (click)="handleClick(color)">{{color}}</button>
     </div>
+    <button (click)="onBuyRent()" [disabled]="showMessage">{{category === 'sale' ? 'Buy' : 'Rent'}}</button>
 </div>

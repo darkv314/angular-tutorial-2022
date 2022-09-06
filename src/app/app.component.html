@@ -1,8 +1,11 @@
 <h1>1P 2022</h1>
 <h2>Autos nuevos</h2>
+<p>Total BS: {{bs}}</p>
+<p>Total USD: {{usd}}</p>
 <div class="nice">
   <div *ngFor="let car of newC">
     <app-auto
+      [id] = "car.id"
       [type]="car.type"
       [colors]="car.color"
       [capacity]="car.capacity"
@@ -11,6 +14,8 @@
       [ttype]="car.timeType"
       [mType]="car.moneyType"
       [category]="car.category"
+      [status]="car.status"
+      (buyRent)="addBuyRent($event)"
     >
     </app-auto>
   </div>
@@ -18,6 +23,8 @@
 
 
 <h2>Autos Usados</h2>
+<p>Total BS: {{bs}}</p>
+<p>Total USD: {{usd}}</p>
 <div class="nice">
   <div *ngFor="let car of oldC">
     <app-auto
