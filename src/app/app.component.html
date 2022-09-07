@@ -1,7 +1,7 @@
 <h1>1P 2022</h1>
 <h2>Autos nuevos</h2>
-<p>Total BS: {{bs}}</p>
-<p>Total USD: {{usd}}</p>
+<p>Total BS: {{valb}}</p>
+<p>Total USD: {{vald}}</p>
 <div class="nice">
   <div *ngFor="let car of newC">
     <app-auto
@@ -15,6 +15,7 @@
       [mType]="car.moneyType"
       [category]="car.category"
       [status]="car.status"
+      [isdisable]="car.status==='enable'?false:true"
       (buyRent)="addBuyRent($event)"
     >
     </app-auto>
@@ -23,19 +24,23 @@
 
 
 <h2>Autos Usados</h2>
-<p>Total BS: {{bs}}</p>
-<p>Total USD: {{usd}}</p>
+<p>Total BS: {{valb1}}</p>
+<p>Total USD: {{vald1}}</p>
 <div class="nice">
   <div *ngFor="let car of oldC">
     <app-auto
-      [type]="car.type"
-      [colors]="car.color"
-      [capacity]="car.capacity"
-      [cDate]="car.createDate"
-      [price]="car.price"
-      [ttype]="car.timeType"
-      [mType]="car.moneyType"
-      [category]="car.category"
+    [id] = "car.id"
+    [type]="car.type"
+    [colors]="car.color"
+    [capacity]="car.capacity"
+    [cDate]="car.createDate"
+    [price]="car.price"
+    [ttype]="car.timeType"
+    [mType]="car.moneyType"
+    [category]="car.category"
+    [status]="car.status"
+    [isdisable]="car.status==='enable'?false:true"
+    (buyRent)="addBuyRent($event)"
     >
     </app-auto>
   </div>

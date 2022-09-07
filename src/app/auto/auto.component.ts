@@ -1,5 +1,6 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { enableDebugTools } from '@angular/platform-browser';
 import { CarService } from '../car.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { CarService } from '../car.service';
   templateUrl: './auto.component.html',
   styleUrls: ['./auto.component.scss']
 })
-export class AutoComponent implements OnInit {
+export class AutoComponent  {
 
   color: string = ""
   showId: boolean = false
@@ -23,11 +24,10 @@ export class AutoComponent implements OnInit {
   @Input() ttype!: any;
   @Input() mType!: string; 
   @Input() status!: string;
+  @Input() isdisable!: boolean;
   @Output() buyRent = new EventEmitter();
   constructor(private carClient: CarService) { }
 
-  ngOnInit(): void {
-  }
 
   handleClick(color: string) {
     this.color=color;
@@ -36,15 +36,17 @@ export class AutoComponent implements OnInit {
     }).subscribe()
   }
 
+
   onBuyRent() {
-    this.showMessage = true;
+    this.isdisable=true;
     this.carClient.changeStatus(this.id, {
       status: 'disable'
     }).subscribe()
+    
     this.buyRent.emit({
       category: this.category,
       price: this.price,
-      moneyTipe: this.mType
+      moneyType: this.mType
     })
   }
 
