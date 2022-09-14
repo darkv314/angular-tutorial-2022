@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { CarService } from '../services/car.service';
+import {Store} from "@ngrx/store";
+import {closeSidePanel, openSidePanel} from "../../redux/home.actions";
+
 
 @Component({
   selector: 'app-home',
@@ -10,7 +13,8 @@ import { CarService } from '../services/car.service';
 export class HomeComponent implements OnInit{
 
   constructor(private carService: CarService, 
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private store: Store) { }
 
   ngOnInit(): void {
     this.carService.getAllCars().subscribe(res => {
@@ -25,6 +29,14 @@ export class HomeComponent implements OnInit{
 
   public onLogout(): void {
     this.authService.logout();
+  }
+
+  onOpenSidePanel() {
+    this.store.dispatch(openSidePanel())
+  }
+
+  onCloseSidePanel() {
+    this.store.dispatch(closeSidePanel())
   }
 
 }
