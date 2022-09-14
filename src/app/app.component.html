@@ -15,3 +15,7 @@
   Country: <input type="text" name="country" ngModel>
   <button (click)="onSubmit(testForm2)">Enviar2</button>
 </form>
+
+<p>REACTIVE FORMS</p>
+Color: <input type="text" [formControl]="colorControl">
+<button (click)="printColorControl()">Print value</button>
