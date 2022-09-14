@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from "@angular/material/button"
 import { RouterModule, Routes } from "@angular/router";
 import { AuthInterceptor } from './pages/interceptors/auth.interceptor';
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -17,7 +18,8 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule),
+    canActivate: [AuthGuard]
   }
 ];
 
