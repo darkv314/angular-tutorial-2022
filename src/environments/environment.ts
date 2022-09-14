@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   app: {
-    apiBaseUrl: 'https://test-upb-314-default-rtdb.firebaseio.com/'
+    apiBaseUrl: 'https://test-upb-314-default-rtdb.firebaseio.com'
   },
   auth: {
     apiBaseUrl: 'https://identitytoolkit.googleapis.com',
