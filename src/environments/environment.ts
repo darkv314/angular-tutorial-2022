@@ -3,7 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  app: {
+    apiBaseUrl: 'https://test-upb-314-default-rtdb.firebaseio.com/'
+  },
+  auth: {
+    apiBaseUrl: 'https://identitytoolkit.googleapis.com',
+    apiKey: 'AIzaSyCdpVdQXTTvYMww1uyr3SwWu2_aerro8mY'
+  }
 };
 
 /*
