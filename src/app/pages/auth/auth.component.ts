@@ -7,7 +7,7 @@ import { Router } from '@angular/router'
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss']
 })
-export class AuthComponent {
+export class AuthComponent implements OnInit {
 
   constructor(private authService: AuthService,
     private router: Router) { }
@@ -32,5 +32,11 @@ export class AuthComponent {
     }).subscribe(res => {
       console.log('Create user: ', res)
     })
+  }
+
+  ngOnInit(): void {
+    /*if(this.authService.verifyLogged()){
+    this.router.navigate(['home'])
+    }*/
   }
 }

@@ -7,6 +7,7 @@ import { MatButtonModule } from "@angular/material/button"
 import { RouterModule, Routes } from "@angular/router";
 import { AuthInterceptor } from './pages/interceptors/auth.interceptor';
 import { AuthGuard } from './core/guards/auth.guard';
+import { LoginGuard } from './core/guards/login.guard';
 
 const routes: Routes = [
   {
@@ -14,7 +15,8 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/auth/auth.module').then(m => m.AuthModule)
+    loadChildren: () => import('./pages/auth/auth.module').then(m => m.AuthModule),
+    canActivate: [LoginGuard]
   },
   {
     path: 'home',
