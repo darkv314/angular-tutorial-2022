@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { CarService } from '../services/car.service';
+import { CarService } from '../services/torneo.service';
 import {Store} from "@ngrx/store";
 import {closeSidePanel, openSidePanel} from "../../redux/home.actions";
 import { RootState } from "../../redux";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -14,15 +15,19 @@ export class HomeComponent implements OnInit{
 
   openPanel: boolean = false;
 
+  sPanel = false;
+
   showFiller = false;
+
+  public torneos!: any
 
   constructor(private carService: CarService, 
     private authService: AuthService,
     private store: Store) { }
 
   ngOnInit(): void {
-    this.carService.getAllCars().subscribe(res => {
-      console.log('Response cars: ', res)
+    this.carService.getAllTorneos().subscribe(res => {
+      this.torneos = res
     })
 
     this.store.select((s: any) => s.home).subscribe(s => {
@@ -30,6 +35,24 @@ export class HomeComponent implements OnInit{
       this.openPanel = s.sidePanel;
       console.log('RESPONSE CARS: ', s, this.openPanel)
     })
+  }
+
+  onSubmit(form: any) {
+    if(form.valid){
+      this.carService.createTorneo({
+        title: form.value.title,
+        startDate: form.value.sDate,
+        endDate: form.value.eDate
+      }).subscribe(res => {
+        this.sPanel = false;
+        window.location.reload()
+      })
+    }
+    
+  }
+
+  onOpenPanel() {
+    this.sPanel=true
   }
 
 

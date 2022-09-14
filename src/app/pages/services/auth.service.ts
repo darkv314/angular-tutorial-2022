@@ -26,7 +26,12 @@ export class AuthService {
   }
 
   createUser(body: any): Observable<any> {
-    return this.http.post(`${this.url}/v1/accounts:signUp?key=${this.apiKey}`, body)
+    return this.http.post(`${this.url}/v1/accounts:signUp?key=${this.apiKey}`, body).pipe(
+      map((res: any) => {
+        this.authSuccess(res.idToken, res.localId)
+        return res
+      })
+    )
   }
 
   private authSuccess(token: string, userId: string): void {

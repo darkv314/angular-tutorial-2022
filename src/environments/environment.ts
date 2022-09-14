@@ -5,11 +5,11 @@
 export const environment = {
   production: false,
   app: {
-    apiBaseUrl: 'https://test-upb-314-default-rtdb.firebaseio.com'
+    apiBaseUrl: 'https://league-of-legends-vankaz-default-rtdb.firebaseio.com'
   },
   auth: {
     apiBaseUrl: 'https://identitytoolkit.googleapis.com',
-    apiKey: 'AIzaSyCdpVdQXTTvYMww1uyr3SwWu2_aerro8mY'
+    apiKey: 'AIzaSyAFfUnj1MMyJzW-N6PxWYCJQaO00QTzAa0'
   }
 };
 

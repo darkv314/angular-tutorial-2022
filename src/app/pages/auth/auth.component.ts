@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router'
+import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 
 @Component({
   selector: 'app-auth',
@@ -8,20 +9,33 @@ import { Router } from '@angular/router'
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
+  private message: boolean = false;
 
   constructor(private authService: AuthService,
-    private router: Router) { }
+    private router: Router) { 
+    }
 
+  // onTest() {
+  //   console.log(this.loginForm)
+  // }
 
-  onLogin() {
-    this.authService.login({
-      email: 'test@test.com',
-      password: '123456',
-      returnSecureToken: true,
-    }).subscribe(res => {
-      console.log('Response: ', res)
-      this.router.navigate(['home'])
-    })
+  onLogin(loginForm: any) {
+    if(loginForm.valid){
+      this.authService.login({
+        email: loginForm.value.email,
+        password: loginForm.value.pass,
+        returnSecureToken: true,
+      }).subscribe(res => {
+        console.log('Login: ', res)
+        this.router.navigate(['home'])
+      })
+    } else {
+      this.message=true
+    }
+  }
+
+  onReg (){
+    this.router.navigate(['register'])
   }
 
   onCreate() {

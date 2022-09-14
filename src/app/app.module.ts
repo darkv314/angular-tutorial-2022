@@ -25,6 +25,11 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule),
+    canActivate: [LoginGuard]
   }
 ];
 
@@ -39,7 +44,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
     StoreModule.forRoot(reducers),
-    StoreDevtoolsModule.instrument()
+    StoreDevtoolsModule.instrument(),
   ],
   providers: [
     {

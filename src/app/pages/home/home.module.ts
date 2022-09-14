@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MatSidenavModule } from "@angular/material/sidenav";
-
+import {FormsModule} from "@angular/forms";
 const routes: Routes = [
   {
     path: '',
@@ -18,7 +18,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    MatSidenavModule
+    MatSidenavModule,
+    FormsModule
   ]
 })
 export class HomeModule { }
