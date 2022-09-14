@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import {
+  HttpErrorResponse,
   HttpRequest,
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
   HttpParams
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
 @Injectable()
@@ -23,10 +24,25 @@ export class AuthInterceptor implements HttpInterceptor {
       params = params.append('auth', token);
       request = request.clone({
         url: request.url,
-        params: params
+        params: params,
+        /*setHeaders: {
+          Authorization: `Bearer ${token}`,
+        },*/
       })
     }
 
-    return next.handle(request);
+    return next.handle(request).pipe(
+      catchError((err: HttpErrorResponse) => {
+        if (err.status === 401) {
+          this.handler401Error();
+        }
+        return throwError('ERROR')
+      })
+    );
+  }
+
+  private handler401Error() {
+    this.authService.logout();
+    return throwError('ERROR 401');
   }
 }
