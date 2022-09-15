@@ -26,15 +26,7 @@ export class HomeComponent implements OnInit{
     private store: Store) { }
 
   ngOnInit(): void {
-    this.carService.getAllTorneos().subscribe(res => {
-      this.torneos = res
-    })
-
-    this.store.select((s: any) => s.home).subscribe(s => {
-      console.log('STORE: ', s)
-      this.openPanel = s.sidePanel;
-      console.log('RESPONSE CARS: ', s, this.openPanel)
-    })
+    
   }
 
   onSubmit(form: any) {
@@ -45,7 +37,7 @@ export class HomeComponent implements OnInit{
         endDate: form.value.eDate
       }).subscribe(res => {
         this.sPanel = false;
-        window.location.reload()
+        window.location.reload();
       })
     }
     
